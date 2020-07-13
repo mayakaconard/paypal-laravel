@@ -26,7 +26,7 @@
             <hr>
         </div>
         <div class="gateway--paypal">
-            <form method="POST" action="{{url('checkout/payment/29955262/paypal')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('checkout.payment.paypal', ['order' => encrypt($transaction_id)]) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <button class="btn btn-pay">
                     <i class="fa fa-paypal" aria-hidden="true"></i> Pay with PayPal

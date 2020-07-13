@@ -37,7 +37,8 @@ class PayPalController extends Controller
     public function checkout($transaction_id, Request $request)
     {
 
-        $order = Order::where('transaction_id', $transaction_id)->first();
+        // $order = Order::where('transaction_id', $transaction_id)->first();
+        $order = Order::where('transaction_id', decrypt($transaction_id))->first();
 
         $paypal = new PayPal;
 
