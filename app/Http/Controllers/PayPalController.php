@@ -13,11 +13,7 @@ class PayPalController extends Controller
 
     public function form(Request $request, $service_id)
     {
-
         $service = Service::findOrFail($service_id);
-
-
-
         $order = new Order;
         $transaction_id = rand(10000000, 99999999);
         $order->user_id = 1;  //user id
@@ -36,7 +32,6 @@ class PayPalController extends Controller
      */
     public function checkout($transaction_id, Request $request)
     {
-
         // $order = Order::where('transaction_id', $transaction_id)->first();
         $order = Order::where('transaction_id', decrypt($transaction_id))->first();
 
